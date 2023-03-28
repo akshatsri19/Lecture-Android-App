@@ -60,18 +60,21 @@
     </TextView>
 
     <EditText
+        android:id="@+id/etNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine">
     </EditText>
 
     <Button
+        android:id="@+id/btnSaveNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAVE NOTES">
     </Button>
 
     <Button
+        android:id="@+id/btnComplete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MARK COMPLETE">

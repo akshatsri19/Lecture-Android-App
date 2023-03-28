@@ -6,6 +6,7 @@
 
     <TextView
         android:id="@+id/lessonNumber"
+        android:text="Num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
@@ -13,13 +14,14 @@
     </TextView>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/lessonName"
-            android:layout_width="match_parent"
+            android:text="Name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:textSize="22sp" >
@@ -27,20 +29,21 @@
 
         <TextView
             android:id="@+id/videoLength"
-            android:layout_width="match_parent"
+            android:text="Length"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:textSize="22sp" >
         </TextView>
 
+        <ImageView
+            android:id="@+id/checkmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_checkmark"
+            android:layout_gravity="center_vertical|end"
+            android:visibility="gone"/>
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </TextView>
-
-
 
 </LinearLayout>

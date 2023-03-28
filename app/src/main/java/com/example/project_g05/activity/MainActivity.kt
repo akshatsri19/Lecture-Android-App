@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             // Clear the stored name from SharedPreferences
             val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.remove("name")
+            editor.clear()
             editor.apply()
             Toast.makeText(this, "Name cleared", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, NameActivity::class.java)
