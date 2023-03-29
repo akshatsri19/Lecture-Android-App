@@ -3,4 +3,5 @@
     <string name="spName"></string>
     <string name="lesson_name">Lesson Name</string>
     <string name="force_sequential_progression">Force Sequential Progression</string>
+    <string name="delete_user_data">Delete User Data</string>
 </resources>

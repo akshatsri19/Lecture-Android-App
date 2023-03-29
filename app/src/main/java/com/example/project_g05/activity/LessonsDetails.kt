@@ -1,7 +1,9 @@
 package com.example.project_g05.activity
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,14 +11,12 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.project_g05.R
-import com.example.project_g05.adapter.LessonsAdapter
 import com.example.project_g05.dataSource.LessonsDatastore
 
 class LessonsDetails : AppCompatActivity() {
 
     private var pos = -1
-
-    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +41,20 @@ class LessonsDetails : AppCompatActivity() {
             etVideoLength.text = currLesson.videoLength.toString()
             etLessonDescription.text = currLesson.lessonDescription
 
+            val watchLesson = findViewById<Button>(R.id.watchLesson)
+            watchLesson.setOnClickListener{
+                val lessonAddress = currLesson.lessonLink
+                val urlToOpenAsUri = Uri.parse(lessonAddress)
+                val intent = Intent(Intent.ACTION_VIEW,urlToOpenAsUri)
+                if (intent.resolveActivity(packageManager) != null) {
+                    startActivity(intent)
+                }
+                else {
+                    val toast = Toast.makeText(this, "Cannot open website", Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+            }
+
             val btnComplete = findViewById<Button>(R.id.btnComplete)
             val isCompleted = sharedPreferences.getBoolean("lesson_${currLesson.lessonNumber}_completed", false)
             if (isCompleted) {
@@ -50,8 +64,17 @@ class LessonsDetails : AppCompatActivity() {
             btnComplete.setOnClickListener {
                 val editor = sharedPreferences.edit()
                 editor.putBoolean("lesson_${currLesson.lessonNumber}_completed", true)
-                editor.apply()
                 // TODO: Add code to update the UI to reflect completion status
+                if(btnComplete.text == "Completed"){
+                    Toast.makeText(this,"You already completed this lesson",Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                else{
+                    var noOfCourseDone = sharedPreferences.getInt("noOfCourseDone",0)
+                    noOfCourseDone++
+                    editor.putInt("noOfCourseDone" , noOfCourseDone)
+                }
+                editor.apply()
                 btnComplete.text = "Completed"
             }
 
@@ -62,7 +85,7 @@ class LessonsDetails : AppCompatActivity() {
             }
             val btnSaveNotes = findViewById<Button>(R.id.btnSaveNotes)
             btnSaveNotes.setOnClickListener{
-                var notes = etNotes.text.toString()
+                val notes = etNotes.text.toString()
                 sharedPreferences.edit().putString("notes_${currLesson.lessonNumber}", notes).apply()
                 Toast.makeText(this, "Notes Saved", Toast.LENGTH_SHORT).show()
             }

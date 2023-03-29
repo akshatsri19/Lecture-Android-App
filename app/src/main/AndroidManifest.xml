@@ -34,4 +34,16 @@
         </activity>
     </application>
 
+    <queries>
+        <!--   configuration code for opening a website address -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data
+                android:host="WWW.youtube.com"
+                android:scheme="http"/>
+        </intent>
+    </queries>
+
+
 </manifest>

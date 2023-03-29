@@ -8,7 +8,6 @@
 
     <TextView
         android:id="@+id/tv_welcome"
-        android:text="Welcome Back, Name"
         android:textColor="#ffffff"
         android:textSize="32sp"
         android:layout_gravity="center_horizontal"
@@ -22,7 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:text="You've completed % of the course!"
         android:textColor="#ffffff"
         android:textSize="22sp" />
     <TextView
@@ -31,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:text="Lessons Completed: 0"
         android:textColor="#ffffff"
         android:textSize="22sp" />
     <TextView
@@ -40,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:text="Lessons Remaining: 0"
         android:textColor="#ffffff"
         android:textSize="22sp" />
 
@@ -61,6 +57,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:padding="13dp"
-        android:text="Delete User Data"
+        android:text="@string/delete_user_data"
         android:textSize="18sp" />
 </LinearLayout>
